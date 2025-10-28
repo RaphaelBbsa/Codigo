@@ -1,0 +1,1 @@
+eu criei essa pasta META-INF pois api JPA procura o arquivo nesse local especifico. é algo obrigatorio. eu nao poderia criar junto com meu arquivo do hibernate por exemplo
