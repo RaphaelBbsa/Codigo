@@ -18,7 +18,7 @@ public CursoTest (){
     public void Cadastro () {
     Curso curso = new Curso();
     curso.setNome("Java");
-    curso.setCodigo("JAVA-123");
+    curso.setCodigo("JAVA-1245");
     curso.setDescricao("Curso de Java");
     curso =   DaoCurso.cadastrar(curso);
 

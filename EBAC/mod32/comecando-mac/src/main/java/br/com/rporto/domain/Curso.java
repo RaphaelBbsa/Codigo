@@ -1,11 +1,14 @@
 package br.com.rporto.domain;
 
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
@@ -23,6 +26,9 @@ public class Curso {
     private String codigo;
     @Column(name = "descricao", nullable = false, length = 100)
     private String descricao;
+
+    @OneToMany(mappedBy = "curso") //aqui eu digo que um curso pode ter muitas matriculas e que a coluna curso na tabela matricula é que faz o mapeamento
+    private List<Matricula> matriculas;
 
     public Long getId() {
         return id;
