@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.barberporto.barberporto.domain.Barbeiro;
-import br.com.barberporto.barberporto.repository.BarbeiroRepository;
+import br.com.barberporto.barberporto.service.BarbeiroService;
 
 
 @RestController //diz ao spring que essa classe vai receber as requisicoes http
@@ -18,21 +18,20 @@ public class BarbeiroController {
 
     
     
-    
-    private final BarbeiroRepository barbeiroRepository;
+    private final BarbeiroService service;
 
-    public BarbeiroController(BarbeiroRepository barbeiroRepository) { //fiz essa injecao de dependencia e garanto que o controller sempre tera um repositorio
-        this.barbeiroRepository = barbeiroRepository;
+    public BarbeiroController(BarbeiroService service) { //fiz essa injecao de dependencia e garanto que o controller sempre tera um repositorio
+        this.service = service;
     }
 
 
     @GetMapping //mapeia requisicoes do tipo GET
     public List<Barbeiro> getAllBarbeiros() {
-        return barbeiroRepository.findAll();
+        return service.listarTodos();
     }
 
     @PostMapping //mapeia requisicoes do tipo POST
     public Barbeiro criar(@RequestBody Barbeiro barbeiro) { 
-        return barbeiroRepository.save(barbeiro);
+        return service.criar(barbeiro);
     }
 }
